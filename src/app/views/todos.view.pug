@@ -12,5 +12,7 @@ mat-toolbar(color='primary')
   mat-toolbar-row(*ngFor='let todo of todos')
     span {{todo.title}}
     span.example-spacer
+    span {{todo.createdAt | date: 'medium'}}
+    span.example-spacer
     mat-checkbox.example-margin([(ngModel)]='todo.completed', (change)='showOptions($event, todo.id)')
     mat-icon.example-icon((click)='deleteTodo(todo.id, todo.title)') remove_circle

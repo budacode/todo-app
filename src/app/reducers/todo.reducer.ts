@@ -41,8 +41,9 @@ export function reducer(state: State = initialState, action: TodoActions.Actions
             };
         }
         case TodoActions.ADD_TODO_ACTION: {
-            const set1 = new Set([...state.todo, ...action.payload]);
-            const forSort = Array.from(set1).sort((a, b) => {
+            const rawTodos = action.payload.filter(nEl => !state.todo.some(oEl => oEl.id === nEl.id));
+            const todosCon = state.todo.concat(rawTodos);
+            const forSort = todosCon.sort((a, b) => {
                 return a.title.localeCompare(b.title);
             });
 
