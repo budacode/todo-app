@@ -1,0 +1,11 @@
+form.example-container
+  mat-form-field
+    input(matInput, name='title', placeholder='title', [(ngModel)]='todo.title')
+  button(mat-raised-button, color='primary', (click)='createTodo()') Create
+br
+button(mat-raised-button, color='primary', (click)='addMoreTodo()') Show More Todo
+mat-card(*ngFor='let todo of todos')
+  h1 {{todo.title}}
+  mat-checkbox([(ngModel)]='todo.completed', (change)='show($event, todo)') Completed
+  button(mat-raised-button='', color='warn', (click)='deleteTodo(todo.id, todo.title)') Delete
+  button(mat-raised-button='', color='accent', routerLink='/todo-update/{{todo.id}}') Update

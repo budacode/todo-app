@@ -1,0 +1,12 @@
+div(*ngIf='todo')
+  mat-card.example-card
+    mat-card-header
+      .example-header-image(mat-card-avatar='')
+      mat-card-title 
+        input(matInput='', name='title', value='{{todo.title}}', [(ngModel)]='updatedTodo.title') 
+        | Title
+      mat-card-subtitle
+        input(matInput='', name='completed', value='{{todo.completed}}', [(ngModel)]='updatedTodo.completed') 
+        | Completed
+    mat-card-actions
+      button(mat-button='', (click)= 'updateTodo(todo.id)')  UPDATE 

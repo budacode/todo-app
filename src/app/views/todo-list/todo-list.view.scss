@@ -1,0 +1,19 @@
+mat-card {
+    margin-bottom: 20px;
+  }
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.example-container > * {
+    width: 100%;
+  }
+
+.mat-raised-button {
+  display: inline-block;
+  align-self: center;
+  text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+}
