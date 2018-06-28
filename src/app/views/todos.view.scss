@@ -1,0 +1,23 @@
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-icon {
+  z-index: 1000;
+}
+
+.mat-icon:hover {
+  cursor: pointer;
+}
+
+.mat-checkbox:hover {
+  cursor: pointer;
+}
+
+.mat-checkbox {
+  z-index: 1000;
+}
