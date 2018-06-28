@@ -42,13 +42,11 @@ export function reducer(state: State = initialState, action: TodoActions.Actions
     }
 
     case TodoActions.ADD_TODOS_ACTION: {
+      const newtodos = action.payload.filter(nEl => !state.todos.some(oEl => oEl.id === nEl.id));
+
       return {
         ...state,
-        /* todos: state.todos.concat(action.payload), */
-
-        todos: Array.from(new Set([...state.todos, ...action.payload])).sort((a, b) => a.title.localeCompare(b.title)),
-
-        /* todos: state.todos.concat(action.payload).sort((a, b) => a.title.localeCompare(b.title)), */
+        todos: state.todos.concat(newtodos).sort((a, b) => a.title.localeCompare(b.title)),
       };
     }
     default: {
