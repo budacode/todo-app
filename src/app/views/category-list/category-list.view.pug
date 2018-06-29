@@ -1,0 +1,6 @@
+h1 Hello, {{ name }}.
+p Looks like feel good.
+p You have {{ number }} task to do today
+p.date Today : {{ date | date: 'MMMM d, y'}}
+.categories
+  .card(*ngFor='let category of categories')
