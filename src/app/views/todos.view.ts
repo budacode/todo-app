@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs/Subscription';
     styleUrls: ['./todos.view.scss'],
 })
 
-export class TodosView {
+export class TodosView implements OnDestroy {
     public todo: any = {
         title: '',
         completed: false,
@@ -24,8 +24,6 @@ export class TodosView {
         this.getTodos();
 
     }
-
-
 
     public getTodos(): void {
         this.todosSubscription = this.store.select(todosReducer.selectTodos).subscribe((todos: any) => {
@@ -66,5 +64,11 @@ export class TodosView {
 
     public addMoreTodo(): void {
         this.todoService.addMoreTodos();
+    }
+
+    public ngOnDestroy(): void {
+        if (this.todosSubscription) {
+            this.todosSubscription.unsubscribe();
+        }
     }
 }
