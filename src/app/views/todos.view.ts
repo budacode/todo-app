@@ -4,29 +4,32 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State as RootState } from '../reducers/root.reducer';
 import * as todosReducer from '../reducers/todo.reducer';
-import { Todo } from '../interfaces/todo.interface';
-import { Subscription } from 'rxjs/Subscription';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
+@AutoUnsubscribe()
 @Component({
     selector: 'app-todos',
     templateUrl: './todos.view.pug',
     styleUrls: ['./todos.view.scss'],
 })
 
-export class TodosView implements OnDestroy {
+export class TodosView implements OnInit, OnDestroy {
     public todo: any = {
         title: '',
         completed: false,
     };
     public todos: any = [];
-    public todosSubscription: Subscription;
-    constructor(private store: Store<RootState>, public todoService: TodoService) {
-        this.getTodos();
 
+    constructor(private store: Store<RootState>, public todoService: TodoService) {
+        //
+    }
+
+    public ngOnInit(): void {
+        this.getTodos();
     }
 
     public getTodos(): void {
-        this.todosSubscription = this.store.select(todosReducer.selectTodos).subscribe((todos: any) => {
+        this.store.select(todosReducer.selectTodos).subscribe((todos: any) => {
             if (todos.length === 0) {
                 this.todoService.getTodos();
             } else {
@@ -67,8 +70,6 @@ export class TodosView implements OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        if (this.todosSubscription) {
-            this.todosSubscription.unsubscribe();
-        }
+        //
     }
 }

@@ -1,18 +1,22 @@
-button(mat-raised-button, color='accent', (click)='addMoreTodo()') Show More Todo
 mat-toolbar(color='primary')
   mat-toolbar-row
-    span TODOS
-  mat-toolbar-row
-    span Add Todo
-      input(type='text', name='todos', value='todos', [(ngModel)]='todo.title')
     span.example-spacer
-    mat-icon.example-icon((click)='createTodo()') add_circle
-  hr
+    span TODO LIST
+    span.example-spacer
+  mat-toolbar-row
+    span.example-spacer
+    button(mat-raised-button, color='accent', (click)='addMoreTodo()') Show More Todo
+    span.example-spacer
+  mat-toolbar-row
+    span Add Todo  
+      input#todos.form-control(formcontrolname='todos', required='', minlength='4', maxlength='20', type='text', name='todos', value='todos', [(ngModel)]='todo.title', matTooltip='Title must be at least 4 characters long!')
+    span.example-spacer
+    mat-icon.example-icon(*ngIf='todo.title.length > 4', (click)='createTodo()', matTooltip='Add todo!') add_circle
 
   mat-toolbar-row(*ngFor='let todo of todos')
     span {{todo.title}}
     span.example-spacer
-    span {{todo.createdAt | date: 'medium'}}
+    span.custom-date {{todo.createdAt | date: 'medium'}}
     span.example-spacer
     mat-checkbox.example-margin([(ngModel)]='todo.completed', (change)='showOptions($event, todo.id)')
-    mat-icon.example-icon((click)='deleteTodo(todo.id, todo.title)') remove_circle
+    mat-icon.example-icon((click)='deleteTodo(todo.id, todo.title)', matTooltip='Delete Todo!') remove_circle

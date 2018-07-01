@@ -13,6 +13,7 @@ import { TodoService } from './services/todo.service';
 import { reducers } from './reducers/root.reducer';
 import { AppRoutingModule } from './/app-routing.module';
 import { TodosView } from './views/todos.view';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TodosView } from './views/todos.view';
     AngularMaterialModule,
     HttpClientModule,
     AppRoutingModule,
+    CommonModule,
   ],
   providers: [TodoService],
   bootstrap: [AppComponent],

@@ -21,3 +21,9 @@
 .mat-checkbox {
   z-index: 1000;
 }
+
+@media only screen and (max-width: 836px) {
+  .custom-date {
+    display: none;
+  }
+}

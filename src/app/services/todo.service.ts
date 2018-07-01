@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Todo } from '../interfaces/todo.interface';
-import { Skip } from '../interfaces/skip.interface';
 
 import { Store } from '@ngrx/store';
 import { State as RootState } from '../reducers/root.reducer';
@@ -27,7 +26,6 @@ export class TodoService {
       });
   }
 
-
   public getTodos(): void {
     this.httpClient.get(`${this.baseUrl}/?skip=${this.skip}&take=${this.take}`)
       .subscribe((todo: any) => {
@@ -47,14 +45,13 @@ export class TodoService {
         this.store.dispatch(new DeleteTodoAction(id));
       });
   }
+
   public updateTodo(id: number, todo: any): void {
     this.httpClient.put(`${this.baseUrl}/${id}`, todo)
       .subscribe(data => {
         this.store.dispatch(new UpdateTodoAction(todo));
       });
   }
-
-
 
   public addMoreTodos(): void {
     this.getTodos();

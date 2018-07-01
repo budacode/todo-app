@@ -13,6 +13,7 @@ import {
     MatSnackBarModule,
     MatToolbarModule,
     MatCheckboxModule,
+    MatTooltipModule,
 } from '@angular/material';
 
 const MATERIAL = [
@@ -30,6 +31,7 @@ const MATERIAL = [
     MatSnackBarModule,
     MatToolbarModule,
     MatCheckboxModule,
+    MatTooltipModule,
 ];
 
 @NgModule({
